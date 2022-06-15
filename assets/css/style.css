@@ -11,7 +11,7 @@
 
 .col {
   display: flex;
-  margin-bottom: 12px;
+  padding-bottom: 12px;
 }
 
 .col-3 {
@@ -26,6 +26,11 @@
 
 .pd-42 {
   padding: 42px 0;
+}
+
+.mg-15 {
+  margin: 0 -15px;
+  display: flex;
 }
 
 .btn {
@@ -113,6 +118,7 @@ body {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
+  cursor: pointer;
 }
 #support p:hover a,
 #support p:hover i,
@@ -203,6 +209,9 @@ body {
   opacity: 0.6;
   /* animation: modalFadeIn ease 0.5s; */
 }
+#nav .ti-search {
+  font-weight: bolder;
+}
 
 .slider {
   background-image: url("https://26634.themes.vinawebsite.vn/wp-content/uploads/2020/03/slider_home.jpg");
@@ -252,7 +261,7 @@ body {
   position: absolute;
   display: flex;
   top: 32px;
-  padding: 0 15px 54px;
+  padding-bottom: 54px;
   /* text-align: center; */
 }
 .process .process-title h3 {
@@ -340,7 +349,6 @@ body {
   bottom: 15%;
   background-color: rgba(255, 255, 255, 0.95);
   transition: all 0.3s;
-  z-index: 1;
   text-align: center;
   padding: 14px;
 }
@@ -533,6 +541,9 @@ body {
 .footer-info a:hover {
   opacity: 1;
 }
+.footer-info .footer-social {
+  padding-bottom: 20px;
+}
 .footer-info .footer-social a {
   color: inherit;
   text-decoration: none;
@@ -550,8 +561,33 @@ body {
   transition: all 0.2s;
 }
 .footer-social .ti-instagram:hover {
-  background-color: #85387e;
-  border: 1.5px solid #85387e;
+  background: #f09433;
+  background: -moz-linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+  border: 1.5px solid #f09433;
   transition: all 0.2s;
 }
 .footer-social .ti-youtube:hover {
@@ -576,3 +612,206 @@ body {
 .footer-links-nav li a:hover {
   opacity: 1;
 }
+
+.modal,
+.modal-search {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.modal.open,
+.modal-search.open {
+  display: flex;
+}
+.modal .modal-container,
+.modal-search .main-modal-search {
+  display: flex;
+  max-width: 875px;
+  width: 100%;
+  background-color: #fff;
+  padding: 30px 5px;
+  box-shadow: 3px 3px 20px 0 rgb(0 0 0 / 35%);
+  animation: modalFadeIn ease 0.7s; /* animation: <tên keyframes> <kiểu animation> <thời gian chạy>; */
+}
+.modal .main-modal {
+  flex: 1;
+  padding: 0 30px 30px;
+}
+.modal .main-modal:first-child {
+  border-right: 1px solid #ececec;
+}
+.modal .main-modal h3 {
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.modal .sub-modal {
+  margin-bottom: 8px;
+}
+.modal .main-modal label {
+  display: block;
+  color: #222;
+  font-size: 14.4px;
+  font-weight: bold;
+  margin-bottom: 5.76px;
+}
+#il {
+  display: flex;
+}
+.sub-modal #checkbox input {
+  margin: 0 4px 0 10px;
+}
+.sub-modal #checkbox label {
+  display: inline-block;
+}
+.modal .sub-modal > input {
+  width: 100%;
+  height: 39px;
+  font-size: 0.97em;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #333;
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 10%);
+  padding: 0 11.6px;
+  margin-bottom: 15.5px;
+}
+.sub-modal input:focus {
+  border: none;
+  box-shadow: 0 0 5px #ccc;
+  opacity: 1;
+  outline: 0;
+}
+.main-modal button {
+  display: inline-block;
+  color: #fff;
+  border-color: rgba(0, 0, 0, 0.05);
+  background-color: #000000;
+  font-size: 0.97em;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  font-weight: bolder;
+  line-height: 2.4em;
+  padding: 0 18.6px;
+  margin-right: 15.5px;
+}
+.main-modal button:hover {
+  opacity: 0.85;
+  transition: all 0.2;
+}
+.main-modal p a {
+  color: #000000;
+  font-size: 16px;
+  text-decoration: none;
+  opacity: 1;
+}
+.main-modal p a:hover {
+  opacity: 0.8;
+}
+
+/* tạo ra chuyển động trượt từ trên xuống */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-130px); /* vị trí bắt đầu chạy xuống*/
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* vị trí kết thúc*/
+  }
+}
+
+.modal-search .main-modal-search {
+  max-width: 600px;
+  font-size: 1.5em;
+  padding: 0;
+}
+.modal-search-input {
+  flex: 1;
+  font-size: 1.15em;
+}
+.modal-search-input input {
+  width: 100%;
+  height: 2.507em;
+  background-color: #fff;
+  color: #333;
+  font-size: 0.97em;
+  border: 1px solid #ddd;
+  padding: 0 0.75em;
+}
+.modal-search-input input:focus {
+  border: none;
+  box-shadow: 0 0 5px #ccc;
+  /* opacity: 1; */
+  outline: 0;
+}
+.modal-search-button {
+  position: relative;
+  font-size: 1.15em;
+}
+.modal-search-button button {
+  min-height: 2.5em;
+  font-size: 0.97em;
+  background-color: #000000;
+  color: #fff;
+  padding: 0 1.2em;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.modal-search-button button:hover {
+  opacity: 0.9;
+  transition: all 0.2;
+}
+.modal-search-button button i {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  display: inline-block;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bolder;
+  line-height: 1.2;
+}
+
+/* .modal .modal-container {
+	-webkit-animation: modal-container 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: modal-container 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+} */
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-6-3 17:22:46
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation modal-container
+ * ----------------------------------------
+ */
+/* @-webkit-keyframes modal-container {
+  0% {
+    -webkit-transform: translateZ(0) translateY(0) translateX(0);
+            transform: translateZ(0) translateY(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: translateZ(160px) translateY(100px) translateX(100px);
+            transform: translateZ(160px) translateY(100px) translateX(100px);
+  }
+}
+@keyframes modal-container {
+  0% {
+    -webkit-transform: translateZ(0) translateY(0) translateX(0);
+            transform: translateZ(0) translateY(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: translateZ(160px) translateY(100px) translateX(100px);
+            transform: translateZ(160px) translateY(100px) translateX(100px);
+  }
+} */
