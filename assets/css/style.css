@@ -172,7 +172,8 @@ body {
 #nav .subnav-service {
   display: none;
   position: absolute;
-  margin-top: 5px;
+  margin-top: 2px;
+  margin-left: -10px;
   background-color: #fff;
   box-shadow: 1px 2px 7px #918d8d;
   border: 3px solid gray;
@@ -211,6 +212,8 @@ body {
 }
 #nav .ti-search {
   font-weight: bolder;
+  font-size: 16px;
+  vertical-align: -3px;
 }
 
 .slider {
@@ -219,12 +222,12 @@ body {
   padding: 20%;
 }
 
-.content {
-}
+/* .content {
+} */
 
-#about {
-}
-#about .sub-about {
+/* #about {
+} */
+.sub-about {
   display: flex;
 }
 .sub-about .about-text,
@@ -292,35 +295,35 @@ body {
   font-weight: 700;
 }
 
-#product {
+#project {
 }
-#product .product-title {
+#project .project-title {
   display: flex;
   margin-bottom: 32px;
 }
-#product .product-title h3,
+#project .project-title h3,
 #service .service-title h3,
 #news .news-title h3,
-.feedback .feedback-title h3 {
+.feedback-title h3 {
   text-align: center;
   color: #000000;
   margin: 0 15px;
 }
-#product .nav-product {
+#project .nav-project {
   display: block;
   text-align: center;
   margin-bottom: 15px;
 }
-#product .nav-product li {
+#project .nav-project li {
   display: inline-block;
   padding: 3px;
 }
-#product .nav-product li:hover {
+#project .nav-project li:hover {
   background-color: yellow;
   /* border-radius: 20px; */
   /* border: 2px solid #000000; */
 }
-#product .nav-product li a {
+#project .nav-project li a {
   text-decoration: none;
   font-size: 12.8px;
   color: #000000;
@@ -330,20 +333,20 @@ body {
   opacity: 0.8;
   letter-spacing: 0.02em;
 }
-#product .product-img {
+#project .project-img {
   display: flex;
 }
-#product .product-main-img {
+#project .project-main-img {
   width: 25%;
   height: 300px;
   position: relative;
   display: inline-block;
 }
-.product-main-img img {
+.project-main-img img {
   width: 100%;
   height: 100%;
 }
-.product-main-img .product-text {
+.project-main-img .project-text {
   position: absolute;
   width: 100%;
   bottom: 15%;
@@ -352,16 +355,16 @@ body {
   text-align: center;
   padding: 14px;
 }
-#product .product-main-img:hover .product-text {
+#project .project-main-img:hover .project-text {
   background-color: #000000;
   color: #f1f1f1;
 }
-#product .product-btn {
+#project .project-btn {
   background-color: yellow;
   padding: 18px 0;
   margin: 8px;
 }
-#product .product-btn > button {
+#project .project-btn > button {
   display: block;
   margin: auto;
 }
@@ -372,7 +375,7 @@ body {
 }
 #service .service-title,
 #news .news-title,
-.feedback .feedback-title {
+.feedback-title {
   display: flex;
 }
 
@@ -424,31 +427,31 @@ body {
 .sub-news .news-text {
   padding: 10px 17px 20px;
 }
-.product-text .news-sub-title,
+.project-text .news-sub-title,
 .news-text .news-sub-title {
   font-size: 16.5px;
   line-height: 1.3;
   margin: 1.65px 0;
 }
-.product-text .news-date,
+.project-text .news-date,
 .news-text .news-date {
   font-size: 11.5px;
   opacity: 0.8;
 }
-.product-text .news-divider,
-.news-text .news-divider {
+.project-text .news-divider,
+.news-divider {
   width: 100%;
   max-width: 30px;
   height: 2px;
   background-color: rgba(0, 0, 0, 0.1);
   margin: 7.2px 0;
 }
-.product-text .news-divider {
+.project-text .news-divider {
   margin: 7.2px 0;
   margin-left: auto;
   margin-right: auto;
 }
-.product-text .news-sub-text,
+.project-text .news-sub-text,
 .news-text .news-sub-text {
   font-size: 14.4px;
   margin: 1.44px 0;
@@ -484,6 +487,7 @@ body {
   text-align: center;
   background-color: rgb(255, 255, 255);
   padding: 20px;
+  box-shadow: 0 1px 3px -2px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
 }
 .feedback .sub-feedback img {
   border-radius: 50%;
