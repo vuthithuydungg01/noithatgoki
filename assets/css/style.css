@@ -54,6 +54,7 @@
 
 .btn:hover {
   background-color: #000000;
+  transition: all .5s;
 }
 
 .btn:hover a {
@@ -358,6 +359,7 @@ body {
 #project .project-main-img:hover .project-text {
   background-color: #000000;
   color: #f1f1f1;
+  transition: all .3s;
 }
 #project .project-btn {
   background-color: yellow;
@@ -768,8 +770,8 @@ body {
   cursor: pointer;
 }
 .modal-search-button button:hover {
-  opacity: 0.9;
-  transition: all 0.2;
+  opacity: 0.8;
+  transition: all 0.2s;
 }
 .modal-search-button button i {
   position: absolute;
