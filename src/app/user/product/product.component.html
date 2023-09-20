@@ -1,0 +1,357 @@
+<app-header></app-header>
+<div class="main-product">
+  <div class="row col js-new-product">
+    <div class="prouct-portfolio">
+      <h3>SẢN PHẨM MỚI</h3>
+      <div class="footer-divider prouct-divider"></div>
+      <ul class="nav">
+        <li *ngFor="let product of listProduct.combo">
+          <a href="#">
+            <img src="{{ product.listImage[0].image }}" alt />
+            <div class="product-info">
+              <div class="product-name">
+                {{ product.name }}
+              </div>
+              <del>
+                {{ product.price }}
+              </del>
+              <div class="product-price">
+                {{ product.discount }}
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <h3 class="pt-30">SẢN PHẨM NỔI BẬT</h3>
+      <div class="footer-divider prouct-divider"></div>
+      <ul class="nav">
+        <li *ngFor="let product of listProduct.combo">
+          <a href="#">
+            <img src="{{ product.listImage[0].image }}" alt />
+            <div class="product-info">
+              <div class="product-name">
+                {{ product.name }}
+              </div>
+              <del>
+                {{ product.price }}
+              </del>
+              <div class="product-price">
+                {{ product.discount }}
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="products">
+      <div class="product-header">
+        <div class="product-breadcrumb">
+          <a href="../index.html">TRANG CHỦ / </a>
+          <h4>SẢN PHẨM</h4>
+        </div>
+        <div class="nav-product">
+          <a href="#" class="js-product"><i class="ti-menu"></i>LỌC</a>
+        </div>
+        <div class="product-sort">
+          <!-- <p>
+                      Showing 1–20 of 28 results
+                  </p> -->
+          <label for="sort">Showing 1–20 of 28 results </label>
+          <select name="sort" id="sort">
+            <option value>Mới nhất</option>
+            <option value>Thứ tự theo mức độ phổ biến</option>
+            <option value>Thứ tự theo điểm đánh giá</option>
+            <option value>Thứ tự theo giá cao xuống thấp</option>
+            <option value>Thứ tự theo giá thấp lên cao</option>
+          </select>
+        </div>
+      </div>
+      <div class="product-list">
+        <h2>
+          <a href><i class="ti-menu-alt"></i>Combo</a>
+        </h2>
+        <p>View all</p>
+        <div class="main-product-list">
+          <div class="pr-col">
+            <div
+              class="product pr-col-4"
+              *ngFor="let product of listProduct.combo"
+            >
+              <img src="{{ product.listImage[0].image }}" alt />
+              <div class="product-text-box">
+                <div class="product-name">
+                  {{ product.name }}
+                </div>
+                <div class="product-price">
+                  <del>
+                    {{ product.price }}
+                  </del>
+                  {{ product.discount }}
+                </div>
+                <button class="btn" (click)="getProductDetail(product.id)">
+                  <a>Chi tiết</a>
+                </button>
+                <button class="btn" (click)="addProduct($event)">
+                  <a>Thêm vào giỏ hàng</a>
+                </button>
+              </div>
+              <div class="badge-container">
+                <div class="badge-inner">
+                  {{ product.sale }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="pd1" class="product-list">
+        <h2>
+          <a href><i class="ti-menu-alt"></i>Phòng khách</a>
+        </h2>
+        <p>View all</p>
+        <div class="main-product-list">
+          <div class="pr-col">
+            <div
+              class="product pr-col-4"
+              *ngFor="let product of listProduct.livingRoom"
+            >
+              <img src="{{ product.listImage[0].image }}" alt />
+              <div class="product-text-box">
+                <div class="product-name">
+                  {{ product.name }}
+                </div>
+                <div class="product-price">
+                  <del>
+                    {{ product.price }}
+                  </del>
+                  {{ product.discount }}
+                </div>
+                <button class="btn" (click)="getProductDetail(product.id)">
+                  <a>Chi tiết</a>
+                </button>
+              </div>
+              <div class="badge-container">
+                <div class="badge-inner">
+                  {{ product.sale }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="pd2" class="product-list">
+        <h2>
+          <a href><i class="ti-menu-alt"></i>Phòng ngủ</a>
+        </h2>
+        <p>View all</p>
+        <div class="main-product-list">
+          <div class="pr-col">
+            <div
+              class="product pr-col-4"
+              *ngFor="let product of listProduct.bedRoom"
+            >
+              <img src="{{ product.listImage[0].image }}" alt />
+              <div class="product-text-box">
+                <div class="product-name">
+                  {{ product.name }}
+                </div>
+                <div class="product-price">
+                  <del>
+                    {{ product.price }}
+                  </del>
+                  {{ product.discount }}
+                </div>
+                <button class="btn" (click)="getProductDetail(product.id)">
+                  <a>Chi tiết</a>
+                </button>
+              </div>
+              <div class="badge-container">
+                <div class="badge-inner">
+                  {{ product.sale }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="pd3" class="product-list">
+        <h2>
+          <a href><i class="ti-menu-alt"></i>Tủ bếp</a>
+        </h2>
+        <p>View all</p>
+        <div class="main-product-list">
+          <div class="pr-col">
+            <div
+              class="product pr-col-4"
+              *ngFor="let product of listProduct.kitchenRoom"
+            >
+              <img src="{{ product.listImage[0].image }}" alt />
+              <div class="product-text-box">
+                <div class="product-name">
+                  {{ product.name }}
+                </div>
+                <div class="product-price">
+                  <del>
+                    {{ product.price }}
+                  </del>
+                  {{ product.discount }}
+                </div>
+                <button class="btn" (click)="getProductDetail(product.id)">
+                  <a>Chi tiết</a>
+                </button>
+              </div>
+              <div class="badge-container">
+                <div class="badge-inner">
+                  {{ product.sale }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="pd4" class="product-list">
+        <h2>
+          <a href><i class="ti-menu-alt"></i>Văn phòng</a>
+        </h2>
+        <p>View all</p>
+        <div class="main-product-list">
+          <div class="pr-col">
+            <div
+              class="product pr-col-4"
+              *ngFor="let product of listProduct.office"
+            >
+              <img src="{{ product.listImage[0].image }}" alt />
+              <div class="product-text-box">
+                <div class="product-name">
+                  {{ product.name }}
+                </div>
+                <div class="product-price">
+                  <del>
+                    {{ product.price }}
+                  </del>
+                  {{ product.discount }}
+                </div>
+                <button class="btn" (click)="getProductDetail(product.id)">
+                  <a>Chi tiết</a>
+                </button>
+              </div>
+              <div class="badge-container">
+                <div class="badge-inner">
+                  {{ product.sale }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="pd5" class="product-list">
+        <h2>
+          <a href><i class="ti-menu-alt"></i>Đồ trang trí</a>
+        </h2>
+        <p>View all</p>
+        <div class="main-product-list">
+          <div class="pr-col">
+            <div
+              class="product pr-col-4"
+              *ngFor="let product of listProduct.decorations"
+            >
+              <img src="{{ product.listImage[0].image }}" alt />
+              <div class="product-text-box">
+                <div class="product-name">
+                  {{ product.name }}
+                </div>
+                <div class="product-price">
+                  <del>
+                    {{ product.price }}
+                  </del>
+                  {{ product.discount }}
+                </div>
+                <button class="btn" (click)="getProductDetail(product.id)">
+                  <a>Chi tiết</a>
+                </button>
+              </div>
+              <div class="badge-container">
+                <div class="badge-inner">
+                  {{ product.sale }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="pd6" class="product-list">
+        <h2>
+          <a href><i class="ti-menu-alt"></i>Bàn</a>
+        </h2>
+        <p>View all</p>
+        <div class="main-product-list">
+          <div class="pr-col">
+            <div
+              class="product pr-col-4"
+              *ngFor="let product of listProduct.table"
+            >
+              <img src="{{ product.listImage[0].image }}" alt />
+              <div class="product-text-box">
+                <div class="product-name">
+                  {{ product.name }}
+                </div>
+                <div class="product-price">
+                  <del>
+                    {{ product.price }}
+                  </del>
+                  {{ product.discount }}
+                </div>
+                <button class="btn" (click)="getProductDetail(product.id)">
+                  <a>Chi tiết</a>
+                </button>
+              </div>
+              <div class="badge-container">
+                <div class="badge-inner">
+                  {{ product.sale }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="pd7" class="product-list">
+        <h2>
+          <a href><i class="ti-menu-alt"></i>Ghế</a>
+        </h2>
+        <p>View all</p>
+        <div class="main-product-list">
+          <div class="pr-col">
+            <div
+              class="product pr-col-4"
+              *ngFor="let product of listProduct.char"
+            >
+              <img src="{{ product.listImage[0].image }}" alt />
+              <div class="product-text-box">
+                <div class="product-name">
+                  {{ product.name }}
+                </div>
+                <div class="product-price">
+                  <del>
+                    {{ product.price }}
+                  </del>
+                  {{ product.discount }}
+                </div>
+                <button class="btn" (click)="getProductDetail(product.id)">
+                  <a>Chi tiết</a>
+                </button>
+              </div>
+              <div class="badge-container">
+                <div class="badge-inner">
+                  {{ product.sale }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

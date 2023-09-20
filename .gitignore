@@ -5,6 +5,8 @@
 /tmp
 /out-tsc
 /bazel-out
+/angular
+/package-lock.json
 
 # Node
 /node_modules
@@ -38,5 +40,4 @@ testem.log
 /typings
 
 # System files
-.DS_Store
-Thumbs.db
+

@@ -1,0 +1,366 @@
+<app-header></app-header>
+<!-- <div class="container">
+  <table id="cart" class="table table-hover table-condensed">
+   <thead>
+    <tr>
+     <th style="width:50%">Tên sản phẩm</th>
+     <th style="width:10%">Giá</th>
+     <th style="width:8%">Số lượng</th>
+     <th style="width:22%" class="text-center">Thành tiền</th>
+     <th style="width:10%"> </th>
+    </tr>
+   </thead>
+   <tbody><tr>
+    <td data-th="Product">
+     <div class="row">
+      <div class="col-sm-2 hidden-xs"><img src="http://hocwebgiare.com/thiet_ke_web_chuan_demo/shopping_cart/images/090.jpg" alt="Sản phẩm 1" class="img-responsive" width="100">
+      </div>
+      <div class="col-sm-10">
+       <h4 class="nomargin">Sản phẩm 1</h4>
+       <p>Mô tả của sản phẩm 1</p>
+      </div>
+     </div>
+    </td>
+    <td data-th="Price">200.000 đ</td>
+    <td data-th="Quantity"><input class="form-control text-center" value="1" type="number">
+    </td>
+    <td data-th="Subtotal" class="text-center">200.000 đ</td>
+    <td class="actions" data-th="">
+     <button class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
+     </button>
+     <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
+     </button>
+    </td>
+   </tr>
+   <tr>
+    <td data-th="Product">
+     <div class="row">
+      <div class="col-sm-2 hidden-xs"><img src="http://hocwebgiare.com/thiet_ke_web_chuan_demo/shopping_cart/images/174.jpg" alt="Sản phẩm 1" class="img-responsive" width="100">
+      </div>
+      <div class="col-sm-10">
+       <h4 class="nomargin">Sản phẩm 2</h4>
+       <p>Mô tả của sản phẩm 2</p>
+      </div>
+     </div>
+    </td>
+    <td data-th="Price">300.000 đ</td>
+    <td data-th="Quantity"><input class="form-control text-center" value="1" type="number">
+    </td>
+    <td data-th="Subtotal" class="text-center">300.000 đ</td>
+    <td class="actions" data-th="">
+     <button class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
+     </button>
+     <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
+     </button>
+    </td>
+   </tr>
+   </tbody><tfoot>
+    <tr class="visible-xs">
+     <td class="text-center"><strong>Tổng 200.000 đ</strong>
+     </td>
+    </tr>
+    <tr>
+     <td><a  class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
+     </td>
+     <td colspan="2" class="hidden-xs"> </td>
+     <td class="hidden-xs text-center"><strong>Tổng tiền 500.000 đ</strong>
+     </td>
+     <td><a  class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
+     </td>
+    </tr>
+   </tfoot>
+  </table>
+ </div> -->
+
+<div class="container">
+  <div class="contact-text-h3"><h3 _ngcontent-ng-c646139450="">GIỎ HÀNG</h3></div>
+  <!-- <div class="woocommerce">
+    <div class="woocommerce-notices-wrapper"></div> -->
+  <div class="flex row-large w-auto row-divided">
+    <div class="col cart-detail py-0">
+      <form
+        class="mb-5 w-full"
+        action="https://hoaphatnoithat.net.vn/gio-hang"
+        method="post"
+      >
+        <!-- <div class="cart-wrapper sm-touch-scroll"> -->
+        <table class="shop_table" cellspacing="0">
+          <thead>
+            <tr>
+              <th class="product-name" colspan="3">Sản phẩm</th>
+              <th class="product-price">Giá</th>
+              <th class="product-quantity">Số lượng</th>
+              <th class="product-subtotal">Tạm tính</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="card_item">
+              <td class="product-remove">
+                <a
+                  class="remove"
+                  aria-label="Xóa sản phẩm này"
+                  data-product_id="1401"
+                  data-product_sku="TQ11"
+                  >×</a
+                >
+              </td>
+
+              <td class="product-thumbnail">
+                <a
+                  ><img
+                    width="250"
+                    height="250"
+                    src=""
+                    class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wvs-archive-product-image lazy-load-active"
+                    alt="Ghế giám đốc TQ11"
+                    decoding="async"
+                    srcset="
+                      https://hoaphatnoithat.net.vn/wp-content/uploads/2019/10/ghe-giam-doc-hoa-phat-TQ11-nau-250x250.jpg 250w,
+                      https://hoaphatnoithat.net.vn/wp-content/uploads/2019/10/ghe-giam-doc-hoa-phat-TQ11-nau-100x100.jpg 100w,
+                      https://hoaphatnoithat.net.vn/wp-content/uploads/2019/10/ghe-giam-doc-hoa-phat-TQ11-nau.jpg         600w
+                    "
+                    data-srcset="https://hoaphatnoithat.net.vn/wp-content/uploads/2019/10/ghe-giam-doc-hoa-phat-TQ11-nau-250x250.jpg 250w, https://hoaphatnoithat.net.vn/wp-content/uploads/2019/10/ghe-giam-doc-hoa-phat-TQ11-nau-100x100.jpg 100w, https://hoaphatnoithat.net.vn/wp-content/uploads/2019/10/ghe-giam-doc-hoa-phat-TQ11-nau.jpg 600w"
+                    sizes="(max-width: 250px) 100vw, 250px"
+                /></a>
+              </td>
+
+              <td class="product-name inline-block" data-title="Sản phẩm">
+                <b>Ghế Giám đốc TQ11</b> <br>
+                <span>CHẤT LIỆU: PVC</span> <br>
+                <span>MÀU SẮC: NÂU</span>
+                <!-- <div class="show-for-small mobile-product-price">
+                      <span class="mobile-product-price__qty">1 x </span>
+                      <span class="woocommerce-Price-amount amount"
+                        ><bdi
+                          >4.590.000&nbsp;<span
+                            class="woocommerce-Price-currencySymbol"
+                            >₫</span
+                          ></bdi
+                        ></span
+                      >
+                    </div> -->
+              </td>
+
+              <td class="product-price" data-title="Giá">
+                <span class="woocommerce-Price-amount amount"
+                  ><bdi
+                    >4.590.000&nbsp;<span
+                      class="woocommerce-Price-currencySymbol"
+                      >₫</span
+                    ></bdi
+                  ></span
+                >
+              </td>
+
+              <td class="product-quantity" data-title="Số lượng">
+                <div class="quantity buttons_added">
+                  <input type="button" value="-" class="minus button is-form" />
+                  <!-- <label class="screen-reader-text" for="quantity_6509bd6fe4dc2"
+                    >Ghế Giám đốc TQ11 số lượng</label
+                  > -->
+                  <input
+                    type="number"
+                    id="quantity_6509bd6fe4dc2"
+                    class="input-text qty text"
+                    step="1"
+                    min="0"
+                    max=""
+                    name="cart[6b5439442db7b548c1ea71db6c7fb3a6][qty]"
+                    value="1"
+                    title="SL"
+                    size="4"
+                    placeholder=""
+                    inputmode="numeric"
+                  />
+                  <input type="button" value="+" class="plus button is-form" />
+                </div>
+              </td>
+
+              <td class="product-subtotal" data-title="Tạm tính">
+                <span class="woocommerce-Price-amount amount"
+                  ><bdi
+                    >4.590.000&nbsp;<span
+                      class="woocommerce-Price-currencySymbol"
+                      >₫</span
+                    ></bdi
+                  ></span
+                >
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="6" class="actions clear">
+                <div class="continue-shopping pull-left text-left">
+                  <a class="button-continue-shopping button primary is-outline">
+                    ←&nbsp;Tiếp tục xem sản phẩm
+                  </a>
+                </div>
+
+                <button
+                  type="submit"
+                  class="button primary mt-0 pull-left small"
+                  name="update_cart"
+                  value="Cập nhật giỏ hàng"
+                  disabled=""
+                  aria-disabled="true"
+                >
+                  Cập nhật giỏ hàng
+                </button>
+
+                <input
+                  type="hidden"
+                  id="woocommerce-cart-nonce"
+                  name="woocommerce-cart-nonce"
+                  value="535440eebf"
+                /><input
+                  type="hidden"
+                  name="_wp_http_referer"
+                  value="/gio-hang"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- </div> -->
+      </form>
+    </div>
+
+    <div class="cart-collaterals large-5 col pb-0">
+      <div class="is-sticky-column w-full">
+        <div class="is-sticky-column__inner">
+          <div class="cart-sidebar col-inner">
+            <div class="cart_totals">
+              <table cellspacing="0">
+                <thead>
+                  <tr>
+                    <th class="product-name" colspan="2">Cộng giỏ hàng</th>
+                  </tr>
+                </thead>
+              </table>
+
+              <!-- <h2>Cộng giỏ hàng</h2> -->
+
+              <table cellspacing="0" class="shop_table shop_table_responsive">
+                <tbody>
+                  <tr class="cart-subtotal">
+                    <th>Tạm tính</th>
+                    <td data-title="Tạm tính">
+                      <span class="woocommerce-Price-amount amount"
+                        ><bdi
+                          >9.393.000&nbsp;<span
+                            class="woocommerce-Price-currencySymbol"
+                            >₫</span
+                          ></bdi
+                        ></span
+                      >
+                    </td>
+                  </tr>
+
+                  <tr class="woocommerce-shipping-totals shipping">
+                    <td class="shipping__inner" colspan="2">
+                      <table class="shipping__table">
+                        <tbody>
+                          <tr>
+                            <th>Giao hàng</th>
+                            <td data-title="Giao hàng">
+                              <ul
+                                id="shipping_method"
+                                class="shipping__list woocommerce-shipping-methods"
+                              >
+                                <li class="shipping__list_item">
+                                  <input
+                                    type="hidden"
+                                    name="shipping_method[0]"
+                                    data-index="0"
+                                    id="shipping_method_0_devvn_district_zone_shipping_7"
+                                    value="devvn_district_zone_shipping_7"
+                                    class="shipping_method"
+                                  /><label
+                                    class="shipping__list_label"
+                                    for="shipping_method_0_devvn_district_zone_shipping_7"
+                                    >Miễn phí vận chuyển</label
+                                  >
+                                </li>
+                              </ul>
+                              <p class="woocommerce-shipping-destination">
+                                Vận chuyển đến <strong>Hà Nội</strong>.
+                              </p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <tr class="tax-rate tax-rate-vn-thue-vat-1">
+                    <th>Thuế VAT</th>
+                    <td data-title="Thuế VAT">
+                      <span class="woocommerce-Price-amount amount"
+                        >939.300&nbsp;<span
+                          class="woocommerce-Price-currencySymbol"
+                          >₫</span
+                        ></span
+                      >
+                    </td>
+                  </tr>
+
+                  <tr class="order-total">
+                    <th>Tổng</th>
+                    <td data-title="Tổng">
+                      <strong
+                        ><span class="woocommerce-Price-amount amount"
+                          ><bdi
+                            >10.332.300&nbsp;<span
+                              class="woocommerce-Price-currencySymbol"
+                              >₫</span
+                            ></bdi
+                          ></span
+                        ></strong
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="wc-proceed-to-checkout">
+                <a
+                  class="checkout-button button alt wc-forward wp-element-button"
+                >
+                  Tiến hành thanh toán</a
+                >
+              </div>
+            </div>
+            <!-- <form class="checkout_coupon mb-0" method="post">
+              <div class="coupon">
+                <h3 class="widget-title">
+                  <i class="icon-tag"></i> Phiếu ưu đãi
+                </h3>
+                <input
+                  type="text"
+                  name="coupon_code"
+                  class="input-text"
+                  id="coupon_code"
+                  value=""
+                  placeholder="Mã ưu đãi"
+                />
+                <input
+                  type="submit"
+                  class="is-form expand"
+                  name="apply_coupon"
+                  value="Áp dụng"
+                />
+              </div>
+            </form> -->
+            <div class="cart-sidebar-content relative"></div>
+          </div>
+        </div>
+        <!-- </div>
+      </div> -->
+      </div>
+
+      <div class="cart-footer-content after-cart-content relative"></div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

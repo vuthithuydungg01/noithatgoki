@@ -1,1 +1,91 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.row {
+  max-width: 1090px;
+  margin: auto;
+  display: block;
+}
+
+.col {
+  display: flex;
+  padding-bottom: 12px;
+}
+
+.col-3 {
+  flex: 1;
+  padding: 0 15px 30px;
+  max-width: unset;
+}
+
+.col-4 {
+  flex: 1;
+  padding: 0 15px 24px;
+}
+
+.pd-42 {
+  padding: 42px 0;
+}
+
+.mg-15 {
+  margin: 0 -15px;
+  display: flex;
+}
+
+.btn {
+  height: 40px;
+  border: 2px solid currentColor;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0 18px;
+  background-color: #fff;
+}
+
+.btn > a {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #000000;
+  line-height: 1.6;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #000000;
+  transition: all 0.5s;
+}
+
+.btn:hover a {
+  color: #fff;
+}
+
+.b {
+  display: block;
+  flex: 1;
+  height: 2px;
+  opacity: 0.1;
+  background-color: currentColor;
+  font-weight: bolder;
+  margin: auto;
+}
+
+html {
+  font-family: "Lato", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #000000;
+  line-height: 1.6;
+  font-weight: 400;
+}
