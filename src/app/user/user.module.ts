@@ -13,6 +13,8 @@ import { ProjectComponent } from './project/project.component';
 import { NewsComponent } from './news/news.component';
 import { ContactComponent } from './contact/contact.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { PayComponent } from './shopping-cart/pay/pay.component';
+// import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -27,13 +29,15 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     ProjectComponent,
     NewsComponent,
     ContactComponent,
-ShoppingCartComponent
+    ShoppingCartComponent,
+    PayComponent
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+  // MatDialogModule,
   ]
 })
 export class UserModule {
 
- }
+}

@@ -9,6 +9,7 @@ import { NewsComponent } from './news/news.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { PayComponent } from './shopping-cart/pay/pay.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
       {
         path: 'shopping-cart',
         component: ShoppingCartComponent,
+        children: [
+          {
+            path: 'pay',
+            component: PayComponent,
+          }]
       },
       {
         path: 'about',
