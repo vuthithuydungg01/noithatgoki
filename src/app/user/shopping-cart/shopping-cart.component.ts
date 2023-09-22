@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ShoppingCartService } from './shopping-cart.service';
+import {Component, OnInit} from '@angular/core';
+import {ShoppingCartService} from './shopping-cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -7,14 +7,17 @@ import { ShoppingCartService } from './shopping-cart.service';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
-constructor(private api: ShoppingCartService,){
+  constructor(private api: ShoppingCartService,) {
 
-}
+  }
 
-ngOnInit(): void {
-    this.api.getCart(1, 10).subscribe(res => {
+  ngOnInit(): void {
+    this.api.getCart({
+      page: 1,
+      limit: 20
+    }).subscribe(res => {
       console.log(res);
 
     })
-}
+  }
 }

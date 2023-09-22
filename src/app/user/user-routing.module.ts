@@ -14,9 +14,11 @@ import { PayComponent } from './shopping-cart/pay/pay.component';
 const routes: Routes = [
   {
     path: '',
+    component: UserComponent,
     children: [
+      { path: '', redirectTo: 'main', pathMatch: 'full' },
       {
-        path: '',
+        path: 'main',
         component: MainComponent,
       },
       {

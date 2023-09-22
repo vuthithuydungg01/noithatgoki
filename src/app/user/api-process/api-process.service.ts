@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/app/environment/environment';
+import { createRequestOption } from 'src/app/create-request-option';
+
 export interface database {
   email?: string;
   password?: string;
@@ -10,18 +13,21 @@ export interface database {
   providedIn: 'root'
 })
 export class ApiProcessService {
-  url = 'http://192.168.1.15:3000';
 
   constructor(public http: HttpClient) { }
 
-
-
-  public getProduct(page: number, limit?: number, type?: number): Observable<any> {
-    return this.http.get<any>(`${this.url}/product?page=${page}&limit=${limit}&type=${type}`);
+  getProduct(req: any): Observable<any> {
+    const params = createRequestOption(req);
+    return this.http.get<any>(`${environment.url}/product`, { params, observe: 'response' });
   }
 
   public getProductDetail(id: number): Observable<any> {
-    return this.http.put<any>(`${this.url}/product/${id}`,null);
+    return this.http.put<any>(`${environment.url}/product/${id}`,null);
+  }
+
+  getProject(req: any): Observable<any> {
+    const params = createRequestOption(req);
+    return this.http.get<any>(`${environment.url}/product`, { params, observe: 'response' });
   }
 
 }

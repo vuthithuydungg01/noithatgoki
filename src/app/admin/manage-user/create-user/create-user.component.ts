@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-user.component.scss']
 })
 export class CreateUserComponent {
+  constructor() {
+
+  }
+
+  onCreateUser(): void{
+
+  }
 
 }

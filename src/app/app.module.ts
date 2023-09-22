@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
 import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
-import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -18,13 +18,12 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
     LoginModule,
     UserModule,
     AdminModule,
-    // JwtModule.forRoot({
-    //   config: {
-    //     // Cấu hình cho JwtModule nếu cần
-    //   },
-    // }),
+
   ],
-  providers: [JwtHelperService],
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

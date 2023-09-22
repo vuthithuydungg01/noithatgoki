@@ -59,9 +59,9 @@ del {
 
 .prouct-portfolio h3 {}
 
-.prouct-portfolio .nav {}
+.prouct-portfolio .navbar {}
 
-.nav li {
+.navbar li {
   list-style: none;
   padding: 10px 0;
   min-height: 80px;
@@ -69,21 +69,21 @@ del {
   border-top: 1px solid #ececec;
 }
 
-.nav li:first-child {
+.navbar li:first-child {
   border: none;
 }
 
-.nav li a {
+.navbar li a {
   display: flex;
   text-decoration: none;
 }
 
-.nav li img {
-  width: 60px;
-  height: 60px;
+.navbar li a img {
+  width: 60px !important;
+  height: 60px !important;
 }
 
-.nav .product-info {
+.navbar .product-info {
   padding-left: 15px;
   color: #111;
 }
@@ -211,9 +211,14 @@ del {
   line-height: unset;
 }
 
-.nav-product {
+.navbar-product {
   display: none;
 }
+
+//.product .main-modal-search .modal-search-button button i {
+//  top: 11px;
+//  left: 12px;
+//}
 
 // .js-new-product {
 //   display: none;

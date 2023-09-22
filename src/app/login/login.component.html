@@ -22,10 +22,10 @@
             style="color: red"
           >
             <div [hidden]="!email?.errors?.['pattern']">
-              Invalid email format!
+              Địa chỉ email không hợp lệ!
             </div>
             <div [hidden]="!email?.errors?.['required']">
-              Email is required!
+              Bạn chưa điền địa chỉ email!
             </div>
           </div>
         </div>
@@ -46,12 +46,12 @@
             style="color: red"
           >
             <div [hidden]="!password?.errors?.['required']">
-              Password is required!
+              Bạn chưa điền password!
             </div>
             <div
-              [hidden]="!password?.errors?.['minlength'] && !password?.errors?.['maxlength']"
+              [hidden]="!password?.errors?.['minlength']"
             >
-              Min Length is 5 and Max Length is 30
+              Password tối thiểu 5 ký tự!
             </div>
           </div>
         </div>
@@ -61,12 +61,12 @@
             ĐĂNG NHẬP
           </button>
 
-          <div id="checkbox">
-            <input type="checkbox" name="" id="" />
-            <label for="" class="label-name"> Ghi nhớ mật khẩu </label>
-          </div>
+<!--          <div id="checkbox">-->
+<!--            <input type="checkbox" name="" id="" />-->
+<!--            <label for="" class="label-name"> Ghi nhớ mật khẩu </label>-->
+<!--          </div>-->
         </div>
-        <p><a href="">Quên mật khẩu?</a></p>
+<!--        <p><a href="">Quên mật khẩu?</a></p>-->
       </form>
     </div>
 
@@ -92,10 +92,10 @@
             style="color: red"
           >
             <div [hidden]="!email?.errors?.['pattern']">
-              Invalid email format!
+              Địa chỉ email không hợp lệ!
             </div>
             <div [hidden]="!email?.errors?.['required']">
-              Email is required!
+              Bạn chưa điền địa chỉ email!
             </div>
           </div>
         </div>
@@ -116,12 +116,12 @@
             style="color: red"
           >
             <div [hidden]="!password?.errors?.['required']">
-              Password is required!
+              Bạn chưa điền password!
             </div>
             <div
-              [hidden]="!password?.errors?.['minlength'] && !password?.errors?.['maxlength']"
+              [hidden]="!password?.errors?.['minlength']"
             >
-              Min Length is 5 and Max Length is 30
+              Password tối thiểu 5 ký tự!
             </div>
           </div>
         </div>

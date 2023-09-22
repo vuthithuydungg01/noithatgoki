@@ -15,6 +15,7 @@ const routes: Routes = [
     path: '',
     component: AdminComponent,
     children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       {
         path: 'dashboard',
         component: DashboardComponent,
@@ -49,16 +50,6 @@ const routes: Routes = [
           component: CreateProjectComponent
         }]
       },
-
-      // {
-      //   path: 'product',
-      //   component: ProductComponent,
-      //   children: [
-      //     {
-      //       path: 'product-detail',
-      //       component: ProductDetailComponent
-      //     }]
-      // },
     ],
   },
 ];

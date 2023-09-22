@@ -14,7 +14,8 @@ import { NewsComponent } from './news/news.component';
 import { ContactComponent } from './contact/contact.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { PayComponent } from './shopping-cart/pay/pay.component';
-// import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { PayComponent } from './shopping-cart/pay/pay.component';
   imports: [
     CommonModule,
     UserRoutingModule,
-  // MatDialogModule,
+    MatDialogModule,
+    FormsModule,
   ]
 })
 export class UserModule {

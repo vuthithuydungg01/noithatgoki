@@ -14,10 +14,10 @@
           <div class="row element-button">
             <div class="col-sm-2">
 
-              <a class="btn btn-add btn-sm" routerLink="create-user" routerLinkActive="active" title="Thêm"><i class="fas fa-plus"></i>
-                Tạo mới nhân viên</a>
+              <button class="btn btn-add btn-sm" onclick="onCreateUser()" routerLink="create-user" routerLinkActive="active" title="Thêm"><i class="fas fa-plus"></i>
+                Tạo mới nhân viên</button>
             </div>
-            <div class="col-sm-2">
+            <!-- <div class="col-sm-2">
               <a class="btn btn-delete btn-sm nhap-tu-file" type="button" title="Nhập" onclick="myFunction(this)"><i
                   class="fas fa-file-upload"></i> Tải từ file</a>
             </div>
@@ -36,9 +36,9 @@
             <div class="col-sm-2">
               <a class="btn btn-delete btn-sm pdf-file" type="button" title="In" onclick="myFunction(this)"><i
                   class="fas fa-file-pdf"></i> Xuất PDF</a>
-            </div>
+            </div> -->
             <div class="col-sm-2">
-              <a class="btn btn-delete btn-sm" type="button" title="Xóa" onclick="myFunction(this)"><i
+              <a class="btn btn-delete btn-sm" type="button" title="Xóa" (onClick)="onDeleteAll()"><i
                   class="fas fa-trash-alt"></i> Xóa tất cả </a>
             </div>
           </div>
@@ -59,11 +59,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let user of listUsers">
                 <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                <td>#CD12837</td>
-                <td>Hồ Thị Thanh Ngân</td>
-                <td><img class="img-card-person" src="/img-anhthe/1.jpg" alt=""></td>
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td><img class="img-card-person" src="{{user.listImage[0]}}" alt=""></td>
                 <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh </td>
                 <td>12/02/1999</td>
                 <td>Nữ</td>
@@ -193,3 +193,4 @@
     </div>
   </div>
 </main>
+<router-outlet></router-outlet>

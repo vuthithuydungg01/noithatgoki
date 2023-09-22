@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="main-product">
   <div class="row col js-new-product">
     <div class="prouct-portfolio">
@@ -7,7 +6,7 @@
       <ul class="nav">
         <li *ngFor="let product of listProduct.combo">
           <a href="#">
-            <img src="{{ product.listImage[0].image }}" alt />
+            <img src="{{ product.listImage[0].image }}" alt/>
             <div class="product-info">
               <div class="product-name">
                 {{ product.name }}
@@ -25,10 +24,10 @@
 
       <h3 class="pt-30">SẢN PHẨM NỔI BẬT</h3>
       <div class="footer-divider prouct-divider"></div>
-      <ul class="nav">
+      <ul class="navbar">
         <li *ngFor="let product of listProduct.combo">
           <a href="#">
-            <img src="{{ product.listImage[0].image }}" alt />
+            <img src="{{ product.listImage[0].image }}" alt/>
             <div class="product-info">
               <div class="product-name">
                 {{ product.name }}
@@ -50,21 +49,29 @@
           <a href="../index.html">TRANG CHỦ / </a>
           <h4>SẢN PHẨM</h4>
         </div>
-        <div class="nav-product">
-          <a href="#" class="js-product"><i class="ti-menu"></i>LỌC</a>
-        </div>
-        <div class="product-sort">
-          <!-- <p>
-                      Showing 1–20 of 28 results
-                  </p> -->
-          <label for="sort">Showing 1–20 of 28 results </label>
-          <select name="sort" id="sort">
-            <option value>Mới nhất</option>
-            <option value>Thứ tự theo mức độ phổ biến</option>
-            <option value>Thứ tự theo điểm đánh giá</option>
-            <option value>Thứ tự theo giá cao xuống thấp</option>
-            <option value>Thứ tự theo giá thấp lên cao</option>
-          </select>
+        <!--        <div class="nav-product">-->
+        <!--          <a href="#" class="js-product"><i class="ti-menu"></i>LỌC</a>-->
+        <!--        </div>-->
+        <!--        <div class="product-sort">-->
+        <div class="main-modal-search flex">
+          <div class="modal-search-input">
+            <input #myInput type="text" id="keyword" (input)="onSearchProduct($event)" placeholder="Tìm kiếm ..."/><i
+            *ngIf="!!myInput" class="ti-close" (click)="clearValue()" style="    position: relative;
+    top: -34px;
+    left: 220px;"></i>
+          </div>
+
+          <div class="modal-search-button">
+            <button id="search"><i class="ti-search" style="top: 11px; left: 12px;"></i></button>
+          </div>
+          <!--          <label for="sort">Showing 1–20 of 28 results </label>-->
+          <!--          <select name="sort" id="sort">-->
+          <!--            <option value>Mới nhất</option>-->
+          <!--            <option value>Thứ tự theo mức độ phổ biến</option>-->
+          <!--            <option value>Thứ tự theo điểm đánh giá</option>-->
+          <!--            <option value>Thứ tự theo giá cao xuống thấp</option>-->
+          <!--            <option value>Thứ tự theo giá thấp lên cao</option>-->
+          <!--          </select>-->
         </div>
       </div>
       <div class="product-list">
@@ -78,7 +85,7 @@
               class="product pr-col-4"
               *ngFor="let product of listProduct.combo"
             >
-              <img src="{{ product.listImage[0].image }}" alt />
+              <img src="{{ product.listImage[0].image }}" alt/>
               <div class="product-text-box">
                 <div class="product-name">
                   {{ product.name }}
@@ -92,7 +99,7 @@
                 <button class="btn" (click)="getProductDetail(product.id)">
                   <a>Chi tiết</a>
                 </button>
-                <button class="btn" (click)="addProduct($event)">
+                <button class="btn" (click)="addProductToCart($event)">
                   <a>Thêm vào giỏ hàng</a>
                 </button>
               </div>
@@ -116,7 +123,7 @@
               class="product pr-col-4"
               *ngFor="let product of listProduct.livingRoom"
             >
-              <img src="{{ product.listImage[0].image }}" alt />
+              <img src="{{ product.listImage[0].image }}" alt/>
               <div class="product-text-box">
                 <div class="product-name">
                   {{ product.name }}
@@ -151,7 +158,7 @@
               class="product pr-col-4"
               *ngFor="let product of listProduct.bedRoom"
             >
-              <img src="{{ product.listImage[0].image }}" alt />
+              <img src="{{ product.listImage[0].image }}" alt/>
               <div class="product-text-box">
                 <div class="product-name">
                   {{ product.name }}
@@ -186,7 +193,7 @@
               class="product pr-col-4"
               *ngFor="let product of listProduct.kitchenRoom"
             >
-              <img src="{{ product.listImage[0].image }}" alt />
+              <img src="{{ product.listImage[0].image }}" alt/>
               <div class="product-text-box">
                 <div class="product-name">
                   {{ product.name }}
@@ -221,7 +228,7 @@
               class="product pr-col-4"
               *ngFor="let product of listProduct.office"
             >
-              <img src="{{ product.listImage[0].image }}" alt />
+              <img src="{{ product.listImage[0].image }}" alt/>
               <div class="product-text-box">
                 <div class="product-name">
                   {{ product.name }}
@@ -256,7 +263,7 @@
               class="product pr-col-4"
               *ngFor="let product of listProduct.decorations"
             >
-              <img src="{{ product.listImage[0].image }}" alt />
+              <img src="{{ product.listImage[0].image }}" alt/>
               <div class="product-text-box">
                 <div class="product-name">
                   {{ product.name }}
@@ -291,7 +298,7 @@
               class="product pr-col-4"
               *ngFor="let product of listProduct.table"
             >
-              <img src="{{ product.listImage[0].image }}" alt />
+              <img src="{{ product.listImage[0].image }}" alt/>
               <div class="product-text-box">
                 <div class="product-name">
                   {{ product.name }}
@@ -326,7 +333,7 @@
               class="product pr-col-4"
               *ngFor="let product of listProduct.char"
             >
-              <img src="{{ product.listImage[0].image }}" alt />
+              <img src="{{ product.listImage[0].image }}" alt/>
               <div class="product-text-box">
                 <div class="product-name">
                   {{ product.name }}
@@ -354,4 +361,3 @@
   </div>
 </div>
 
-<app-footer></app-footer>

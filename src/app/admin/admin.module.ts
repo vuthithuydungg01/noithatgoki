@@ -16,8 +16,8 @@ import { CreateUserComponent } from './manage-user/create-user/create-user.compo
 import {  NgChartsModule } from 'ng2-charts';
 import { CreateProductComponent } from './manage-product/create-product/create-product.component';
 import { CreateProjectComponent } from './manage-project/create-project/create-project.component';
-
-
+import { MatDialogModule } from '@angular/material/dialog';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -40,7 +40,9 @@ import { CreateProjectComponent } from './manage-project/create-project/create-p
     AdminRoutingModule,
     RouterModule,
     NgChartsModule,
-
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

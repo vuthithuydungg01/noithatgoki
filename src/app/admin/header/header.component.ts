@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  constructor() {
+  }
+
+  onLogout() : void {
+    sessionStorage.setItem('token', '');
+    sessionStorage.setItem('role', '');
+  }
 }
