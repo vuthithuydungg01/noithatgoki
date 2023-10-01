@@ -14,8 +14,9 @@ import { NewsComponent } from './news/news.component';
 import { ContactComponent } from './contact/contact.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { PayComponent } from './shopping-cart/pay/pay.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {FormsModule} from "@angular/forms";
+import {ToastrModule} from "ngx-toastr";
 
 
 @NgModule({
@@ -36,9 +37,11 @@ import {FormsModule} from "@angular/forms";
   imports: [
     CommonModule,
     UserRoutingModule,
-    MatDialogModule,
+    // MatDialogModule,
     FormsModule,
-  ]
+    ToastrModule
+  ],
+  // providers: [MatDialogRef],
 })
 export class UserModule {
 

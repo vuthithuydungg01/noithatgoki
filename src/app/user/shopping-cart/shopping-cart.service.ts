@@ -12,14 +12,32 @@ export class ShoppingCartService {
 
   constructor(public http: HttpClient) { }
 
-  public getCart(req: any): Observable<any> {
+  getCart(req: any): Observable<any> {
     const params = createRequestOption(req);
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + sessionStorage.getItem('token')
-    });
-
-    return this.http.get<any>(`${environment.url}/cart`, { headers ,  params, observe: 'response' });
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer '  + sessionStorage.getItem('token')
+      }),
+      params: params
+    };
+    return this.http.get<any>(`${environment.url}/cart`, httpOptions);
   }
 
+  deleteProductInCart(id: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer '  + sessionStorage.getItem('token')
+      })
+    };
+    return this.http.delete<any>(`${environment.url}/cart/${id}`, httpOptions);
+  }
+
+  public addOrder(req: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer '  + sessionStorage.getItem('token')
+      })
+    };
+    return this.http.post<any>(`${environment.url}/order`, req, httpOptions);
+  }
 }

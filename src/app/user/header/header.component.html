@@ -1,4 +1,3 @@
-
 <div class="relative w-full">
   <div id="header1">
     <div
@@ -9,24 +8,30 @@
           <a href="tel:19009999"><i class="ti-mobile"></i>HOTLINE: 1900 9999</a>
         </p>
         <p>
-          <a href="mailto:vuthithuydungg01@gmail.com"
-            ><i class="ti-email"></i>vuthithuydungg01@gmail.com</a
+          <a href="mailto:gokivietnam26@gmail.com"
+          ><i class="ti-email"></i>gokivietnam26@gmail.com</a
           >
         </p>
       </div>
       <div id="signin">
         <p>
           <button
-            (click)="onLogin()"
-
+            routerLink="user/login" routerLinkActive="active"
             class="js-sign-in"
-            >Đăng nhập/Đăng ký</button
+          >Đăng nhập
+          </button
           >
-        </p>
-        <p>
-          <a (click)="onLogout()" routerLink="/"
-          routerLinkActive="active" class="js-sign-in"
-            >Đăng xuất</a
+          <span> | </span>
+          <button
+            routerLink="user/signup" routerLinkActive="active"
+            class="js-sign-in"
+          >Đăng ký
+          </button
+          >
+          <span *ngIf="activeShoppingCart" > | </span>
+          <button *ngIf="activeShoppingCart" (click)="onLogout()" routerLink="/"
+             routerLinkActive="active" class="js-sign-in"
+          >Đăng xuất</button
           >
         </p>
       </div>
@@ -36,7 +41,7 @@
   <div id="header2">
     <div class="main-header2 row">
       <a href="#"
-        ><img src="./assets/img/logo1.png" alt="logo" class="logo-img"
+      ><img src="./assets/img/logo1.png" alt="logo" class="logo-img"
       /></a>
 
       <ul id="nav">
@@ -44,35 +49,13 @@
         <li><a routerLink="/about" routerLinkActive="active">Giới thiệu</a></li>
         <li>
           <a routerLink="/product" routerLinkActive="active"
-            >Sản phẩm <i class="ti-angle-down"></i
-          ></a>
-          <ul class="subnav-product">
-                      <li><a
-                        routerLink="/product" routerLinkActive="active">Phòng
-                              khách</a></li>
-                      <li><a
-                        routerLink="/product" routerLinkActive="active">Phòng
-                              ngủ</a></li>
-                      <li><a
-                        routerLink="/product" routerLinkActive="active">Tủ
-                              bếp</a></li>
-                      <li><a
-                        routerLink="/product" routerLinkActive="active">Văn
-                              phòng</a></li>
-                      <li><a
-                        routerLink="/product" routerLinkActive="active">Đồ
-                              trang trí</a></li>
-                  </ul>
+          >Sản phẩm
+
+          </a>
+
         </li>
         <li><a routerLink="/project" routerLinkActive="active">Dự án</a></li>
-        <li>
-          <a href="#service">Dịch vụ <i class="ti-angle-down"></i></a>
-          <ul class="subnav-service">
-            <li><a href="#pd1">Nội thất căn hộ</a></li>
-            <li><a href="#pd2">Nội thất văn phòng</a></li>
-            <li><a href="#pd3">Nội thất cửa hàng</a></li>
-          </ul>
-        </li>
+
         <li><a routerLink="/news" routerLinkActive="active">Tin tức</a></li>
         <li><a routerLink="/contact" routerLinkActive="active">Liên hệ</a></li>
         <!-- <li>
@@ -80,7 +63,7 @@
         </li> -->
         <li *ngIf="activeShoppingCart">
           <a class="cart" routerLink="/shopping-cart" routerLinkActive="active"
-            ><i class="ti-shopping-cart"></i
+          ><i class="ti-shopping-cart"></i
           ></a>
         </li>
       </ul>
@@ -97,7 +80,7 @@
           <li>
             <div class="main-modal-search">
               <div class="modal-search-input">
-                <input type="text" placeholder="Tìm kiếm ..." />
+                <input type="text" placeholder="Tìm kiếm ..."/>
               </div>
               <div class="modal-search-button">
                 <button id="search"><i class="ti-search"></i></button>
@@ -111,25 +94,25 @@
           </li>
           <li>
             <a routerLink="/product" routerLinkActive="active"
-              >Sản phẩm <i class="ti-angle-down"></i
+            >Sản phẩm <i class="ti-angle-down"></i
             ></a>
-             <ul class="subnav-product">
-                          <li><a
-                            routerLink="/product" routerLinkActive="active">Phòng
-                                  khách</a></li>
-                          <li><a
-                            routerLink="/product" routerLinkActive="active">Phòng
-                                  ngủ</a></li>
-                          <li><a
-                            routerLink="/product" routerLinkActive="active">Tủ
-                                  bếp</a></li>
-                          <li><a
-                            routerLink="/product" routerLinkActive="active">Văn
-                                  phòng</a></li>
-                          <li><a
-                            routerLink="/product" routerLinkActive="active">Đồ
-                                  trang trí</a></li>
-                      </ul>
+            <ul class="subnav-product">
+              <li><a
+                routerLink="/product" routerLinkActive="active">Phòng
+                khách</a></li>
+              <li><a
+                routerLink="/product" routerLinkActive="active">Phòng
+                ngủ</a></li>
+              <li><a
+                routerLink="/product" routerLinkActive="active">Tủ
+                bếp</a></li>
+              <li><a
+                routerLink="/product" routerLinkActive="active">Văn
+                phòng</a></li>
+              <li><a
+                routerLink="/product" routerLinkActive="active">Đồ
+                trang trí</a></li>
+            </ul>
           </li>
           <li><a href="/project">Dự án</a></li>
           <li>
@@ -147,15 +130,15 @@
           <li>
             <div class="footer-social">
               <a href="https://www.facebook.com/noithatgoki26/"
-                ><i class="ti-facebook"></i
+              ><i class="ti-facebook"></i
               ></a>
               <a href="https://www.instagram.com/_vuthuydungg_/"
-                ><i class="ti-instagram"></i
+              ><i class="ti-instagram"></i
               ></a>
               <a href="#"><i class="ti-twitter-alt"></i></a>
               <a
                 href="https://www.youtube.com/channel/UCHsYPSIbmbQ1-Oi2ttwi-Gg/featured"
-                ><i class="ti-youtube"></i
+              ><i class="ti-youtube"></i
               ></a>
             </div>
           </li>

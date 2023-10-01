@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit, ElementRef, ViewChild} from '@angular/core';
 import {ApiProcessService} from '../api-process/api-process.service';
 import {Router} from '@angular/router';
-import {Subject, Subscription} from 'rxjs';
+import {Subject, Subscription, of} from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-product',
@@ -11,23 +12,23 @@ import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 })
 export class ProductComponent implements OnInit, OnDestroy {
   listProduct: any = {
-    combo: [],
-    livingRoom: [],
-    bedRoom: [],
-    kitchenRoom: [],
-    office: [],
-    decorations: [],
-    table: [],
-    char: [],
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: [],
+    7: [],
+    8: [],
   };
-  typeProduct = ['combo', 'livingRoom', 'bedRoom', 'kitchenRoom', 'office', 'decorations', 'table', 'char'];
+  typeProduct = [1, 2, 3, 4, 5, 6, 7, 8];
   searchTerms = new Subject<string>();
   searchSubscription: Subscription = new Subscription();
   @ViewChild('myInput', {static: true}) myInput: ElementRef | undefined;
 
   constructor(private api: ApiProcessService,
               private router: Router,
-              // private route: Route,
+              public toasterService: ToastrService
   ) {
   }
 
@@ -38,27 +39,36 @@ export class ProductComponent implements OnInit, OnDestroy {
       .pipe(
         debounceTime(1000), // Chờ 1 giây sau khi người dùng ngừng nhập
         distinctUntilChanged(), // Chỉ gửi yêu cầu mới nếu giá trị thay đổi
-        switchMap((term: string) => this.api.getProduct({page: 1, limit: 20, key: term}))
+        switchMap((key: string) => this.getProduct( key))
       )
       .subscribe((results) => {
         this.listProduct = results;
+
       });
   }
 
-  getProduct(): void {
-    this.typeProduct.map((type, index) => {
-      this.api.getProduct({page: 1, limit: 20, type: index}).subscribe((res) => {
-        Object.keys(this.listProduct).forEach(key => {
-          if (type === key) {
-            this.listProduct[key].push(...res.body);
-          }
-        })
+  getProduct(key?: string) {
+    this.listProduct = {
+      1: [],
+      2: [],
+      3: [],
+      4: [],
+      5: [],
+      6: [],
+      7: [],
+      8: [],
+    };
+    this.typeProduct.map((type) => {
+      this.api.getProduct({type: type, key: key}).subscribe((res) => {
+        this.listProduct[type].push(...res.body.listProduct);
       });
     });
+    return of(this.listProduct);
   }
 
   onSearchProduct(inputValue: any): void {
     this.searchTerms.next(inputValue?.target.value || null);
+    !inputValue?.target.value && this.getProduct();
   }
 
   clearValue(): void {
@@ -68,19 +78,28 @@ export class ProductComponent implements OnInit, OnDestroy {
     }
   }
 
-  getProductDetail(id: string): void {
-    console.log(id);
-    this.router.navigate([`${window.location.href}/product-detail`]);
-    this.api.getProductDetail(+id).subscribe(res => {
-      console.log(res);
-
-    })
-
+  realMoneyPrice(price: number, discount?: number): number {
+    return discount ? price * (discount / 100) : price;
   }
 
-  addProductToCart(event: any): void {
-    console.log(event);
+  getProductDetail(id: string): void {
 
+    this.router.navigate(['/product/product-detail', id]);
+  }
+
+  addProductToCart(id: any): void {
+    if (sessionStorage.getItem('role') === 'USER') {
+      this.api.addProductToCart({productId: id}).subscribe(res => {
+        if (res) {
+          this.toasterService.success('Thêm sản phẩm thành công!');
+
+        }
+      }, error => {
+        console.log(error)
+      })
+    } else {
+      this.router.navigate(['/user/login']);
+    }
   }
 
   ngOnDestroy() {

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ManageUserService } from './manage-user.service';
+import {PopupDeleteComponent} from "../popup-delete/popup-delete.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-manage-user',
@@ -7,17 +9,34 @@ import { ManageUserService } from './manage-user.service';
   styleUrls: ['./manage-user.component.scss'],
 })
 export class ManageUserComponent implements OnInit {
-  listUsers: any[] = [];
-  constructor(private api: ManageUserService) {}
+  listUser: any[] = [];
+  totalUser = 0;
+  constructor(private apiUser: ManageUserService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.api
-      .getUser({ page: 1, limit: 20 })
-      .subscribe((res) => {
-        if(res.status === 200) {
-          this.listUsers = res.body;
-        }
-      });
+   this.getUser();
   }
-  onDeleteAll(): void {}
+
+  getUser(): void {
+    this.apiUser.getUser({}).subscribe(res => {
+      this.listUser = res.body.listUser;
+      this.totalUser = res.body.total;
+    })
+  }
+  onDelete(user?: any): void {
+    console.log(user)
+    const dialogRef = this.dialog.open(PopupDeleteComponent, {
+      width: '500px',
+      data: user
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.getUser();
+      }
+    });
+  }
+  /*onEdit(user?: any): void {
+    console.log(user)
+  }*/
 }

@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
   {
-    path: 'login',
+    path: 'user',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule),
   },
@@ -21,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {enableTracing: false})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

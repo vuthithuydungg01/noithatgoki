@@ -19,4 +19,12 @@ export class ManageUserService {
     });
     return this.http.get<any>(`${environment.url}/user/list`, {headers, params, observe: 'response' });
   }
+
+  deleteUser(id: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token')
+    });
+    return this.http.delete<any>(`${environment.url}/user/${id}`, {headers});
+  }
 }

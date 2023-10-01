@@ -6,15 +6,14 @@ import {ShareDataService} from "../../share-data.service";
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit{
-  userInfo = {
-    userName: '',
-    avatar: '',
-  };
+export class SidebarComponent implements OnInit {
+  userInfo: any = {};
+
   constructor(private shareData: ShareDataService) {
   }
 
   ngOnInit() {
-    this.userInfo = {...this.shareData.getSharedData()};
+    this.userInfo = this.shareData.getSharedData();
+    this.userInfo.avatar = this.userInfo.avatar.slice(2, -2);
   }
 }

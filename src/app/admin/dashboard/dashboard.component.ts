@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataset, ChartType, ChartOptions } from 'chart.js';
+import {ManageUserService} from "../manage-user/manage-user.service";
+import {ManageProductService} from "../manage-product/manage-product.service";
+import {ManageOrderService} from "../manage-order/manage-order.service";
+import {DashboardService} from "./dashboard.service";
+import {ShareDataService} from "../../share-data.service";
 
 
 @Component({
@@ -8,30 +13,46 @@ import { ChartDataset, ChartType, ChartOptions } from 'chart.js';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  listUser: any[] = [];
+  totalUser = 0;
+  totalProduct = 0;
+  totalOrder = 0;
+  productEntity = 0;
+
   radarChartOptions: ChartOptions = {
     responsive: true,
   };
   radarChartLabels: any[] = [
-    'Tháng 01',
-    'Tháng 02',
-    'Tháng 03',
-    'Tháng 04',
-    'Tháng 05',
-    'Tháng 06',
+    // 'Tháng 04',
+    // 'Tháng 05',
+    // 'Tháng 06',
+    // 'Tháng 07',
+    // 'Tháng 08',
+    // 'Tháng 09',
   ];
 
   radarChartData: ChartDataset[] = [
-    { data: [62, 59, 80, 81, 56, 77], label: 'Khách hàng' },
-    { data: [30, 48, 50, 29, 80, 99], label: 'Đơn hàng' },
+    { data: [], label: 'Khách hàng' },
+    { data: [], label: 'Đơn hàng' },
+    // { data: [2, 5, 10, 8, 5, 12], label: 'Khách hàng' },
+    // { data: [5, 2, 3, 4, 6, 8], label: 'Đơn hàng' },
   ];
-  radarChartType: ChartType = 'radar';
+  radarChartType: ChartType = `radar`;
 
 
   lineChartData: ChartDataset[] = [
-    { data: [85, 72, 78, 75, 77, 75], label: 'Crude oil prices' },
+    { data: [], label: 'Doanh thu' },
+    // { data: [24000000, 36700000, 30000000, 32000000, 53000000, 60000000], label: 'Doanh thu' },
   ];
 
-  lineChartLabels: any[] = ['January', 'February', 'March', 'April', 'May', 'June'];
+  lineChartLabels: any[] = [
+    // 'Tháng 04',
+    // 'Tháng 05',
+    // 'Tháng 06',
+    // 'Tháng 07',
+    // 'Tháng 08',
+    // 'Tháng 09',
+  ];
 
   lineChartOptions = {
     responsive: true,
@@ -48,9 +69,42 @@ export class DashboardComponent implements OnInit {
   lineChartPlugins = [];
   lineChartType: ChartType = 'line';
 
-  constructor() {}
+  constructor(private apiUser: ManageUserService,
+              private apiProduct: ManageProductService,
+              private apiOrder: ManageOrderService,
+              private apiDashboard: DashboardService,
+              private shareData: ShareDataService,
+  ) {}
 
   ngOnInit(): void {
+    this.apiUser.getUser({}).subscribe(res => {
+      this.listUser = res.body.listUser.filter((i: any) => i.roles === 'USER');
+      this.totalUser = res.body.total;
+    })
+    this.apiProduct.getProduct({}).subscribe(res => {
+      this.totalProduct = res.body.total;
+    })
+    this.apiProduct.getProduct({status: 0}).subscribe(res => {
+      this.productEntity = res.body.total;
+    })
+    this.apiOrder.getOrder({}).subscribe(res => {
+      this.totalOrder = res.body.total || 0;
+    })
+    this.apiDashboard.getUserStatistical().subscribe(res => {
+      this.radarChartData[0].data = res.body.map((i: any) => +i.amount).reverse();
+      this.radarChartLabels = res.body.map((i: any) => +i.month).reverse();
+    })
+
+    this.apiDashboard.getOrderStatistical().subscribe(res => {
+      this.radarChartData[1].data = res.body.map((i: any) => +i.amount).reverse();
+      this.radarChartLabels = res.body.map((i: any) => +i.month).reverse();
+    })
+    this.apiDashboard.getRevenue().subscribe(res => {
+      this.lineChartData[0].data = res.body.map((i: any) => +i.amount).reverse();
+      this.lineChartLabels = res.body.map((i: any) => +i.month).reverse();
+    })
 
   }
+
+
 }

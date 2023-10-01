@@ -1,44 +1,58 @@
-import { Component } from '@angular/core';
-import { ManageProductService } from './manage-product.service';
-import {LoginComponent} from "../../login/login.component";
-import {MatDialog} from "@angular/material/dialog";
+import {Component, OnInit} from '@angular/core';
+import {ManageProductService} from './manage-product.service';
 import {Subscription} from "rxjs";
-import {CreateProductComponent} from "./create-product/create-product.component";
+import {Router} from "@angular/router";
+import {PopupDeleteComponent} from "../popup-delete/popup-delete.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-manage-product',
   templateUrl: './manage-product.component.html',
   styleUrls: ['./manage-product.component.scss']
 })
-export class ManageProductComponent {
-  listProducts: any[] = [];
+export class ManageProductComponent implements OnInit {
+  listProduct: any[] = [];
   subscription = new Subscription
+  activeCreate = false;
+
   constructor(private api: ManageProductService,
-              private dialog: MatDialog) {}
+              private router: Router,
+              private dialog: MatDialog
+  ) {
+  }
+
   ngOnInit(): void {
+    this.getProduct();
+  }
+
+  getProduct(): void {
     this.api
-      .getProduct({ page: 1, limit: 20 })
+      .getProduct({})
       .subscribe((res) => {
-        if(res.status === 200) {
-          this.listProducts = res.body;
+        if (res.status === 200) {
+          this.listProduct = res.body.listProduct;
         }
       });
   }
+
   onCreateProduct(): void {
-    const dialogRef = this.dialog.open(CreateProductComponent, {
-      panelClass: 'vcs-config-dialog',
-      width: '860px',
-      data: {
-
-      },
-    });
-    this.subscription.add(
-      dialogRef.afterClosed().subscribe(status => {
-        console.log(status);
-
-      })
-    );
+    this.activeCreate = true;
   }
-  onEdit(id?: string): void {}
-  onDelete(id?: string): void {}
+
+  onEdit(id: string): void {
+    this.router.navigate(['/admin/manage-product/edit-product', id]);
+  }
+
+  onDelete(id?: string): void {
+    const dialogRef = this.dialog.open(PopupDeleteComponent, {
+      width: '500px',
+      data: id
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getProduct();
+      }
+    });
+  }
 }

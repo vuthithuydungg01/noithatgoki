@@ -18,6 +18,8 @@ import { CreateProductComponent } from './manage-product/create-product/create-p
 import { CreateProjectComponent } from './manage-project/create-project/create-project.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { EditProductComponent } from './manage-product/edit-product/edit-product.component';
+import { PopupDeleteComponent } from './popup-delete/popup-delete.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     DashboardComponent,
     CreateUserComponent,
     CreateProductComponent,
-    CreateProjectComponent
+    CreateProjectComponent,
+    EditProductComponent,
+    PopupDeleteComponent
   ],
   imports: [
     CommonModule,

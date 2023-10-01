@@ -33,15 +33,16 @@
 #support .ti-email {
   padding-right: 6px;
 }
-#signin a {
+#signin button {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.8);
+  padding: 0 8px;
   text-decoration: none;
   cursor: pointer;
 }
 #support p:hover a,
 #support p:hover i,
-#signin a:hover {
+#signin button:hover {
   color: #fff;
 }
 

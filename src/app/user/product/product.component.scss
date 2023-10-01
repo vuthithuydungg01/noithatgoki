@@ -2,17 +2,30 @@
 
 @import '../footer/footer.component.scss';
 
+
+.search_input {
+  border: 1px solid #8f9193;
+  padding: 8px 24px 8px 8px;
+}
+#search {
+  position: absolute;
+  top: 28px;
+  right: 8px;
+}
 .pt-30 {
   padding-top: 30px;
 }
 
 .pr-col {
   display: flex;
+  flex-wrap: wrap;
   margin: 0 -10px;
+  max-width: 100%;
 }
 
 .pr-col-4 {
-  flex: 0.25;
+  //flex: 0.25;
+  width: 25%;
   padding: 0 10px 20px;
 }
 

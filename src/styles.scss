@@ -2,6 +2,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'ngx-toastr/toastr';
 
 
 * {
@@ -80,20 +82,22 @@
   margin: auto;
 }
 
-html {
+/*html {
   font-family: "Lato", sans-serif!important;
   scroll-behavior: smooth;
-}
+}*/
 
 body {
   color: #000000;
   line-height: 1.6;
   font-weight: 400;
+  font-family: "Lato", sans-serif!important;
+  scroll-behavior: smooth;
 }
 
 body h3 {
-  font-size: 1.17em;
-  font-weight: 700;
+  font-size: 1.17em!important;
+  font-weight: 700!important;
 }
 
 #all-header {

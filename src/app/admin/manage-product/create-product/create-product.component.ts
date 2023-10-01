@@ -2,6 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ManageProductService} from "../manage-product.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-product',
@@ -9,29 +10,25 @@ import {ManageProductService} from "../manage-product.service";
   styleUrls: ['./create-product.component.scss']
 })
 export class CreateProductComponent {
+  imageUrl: string | ArrayBuffer | null | undefined = null;
+
   createProductForm = new FormGroup({
-    productId: new FormControl('', [
-      Validators.required,
-    ]),
     productName: new FormControl('', [
       Validators.required,
     ]),
-    productNumber: new FormControl(0, [
+    productAmount: new FormControl(0, [
       Validators.required,
     ]),
-    productStatus: new FormControl(0, [
+    productCategory: new FormControl(0, [
       Validators.required,
     ]),
-    productCategory: new FormControl('', [
+    productMaterial: new FormControl('', [
       Validators.required,
     ]),
-    productSupplier: new FormControl('', [
+    productPrice: new FormControl(0, [
       Validators.required,
     ]),
-    productPrice: new FormControl('', [
-      Validators.required,
-    ]),
-    productDiscount: new FormControl('', [
+    productDiscount: new FormControl(0, [
       Validators.required,
     ]),
     productImg: new FormControl('', [
@@ -42,34 +39,49 @@ export class CreateProductComponent {
     ]),
   });
 
+
   constructor(
-    public dialogRef: MatDialogRef<CreateProductComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private api: ManageProductService
+    // public dialogRef: MatDialogRef<CreateProductComponent>,
+    // @Inject(MAT_DIALOG_DATA) public data: any,
+    private api: ManageProductService,
+    private router: Router
   ) {
   }
 
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        this.imageUrl = e.target?.result;
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+
   onCreateProduct(): void {
-    this.api.addProduct({
+    const imageUrl: any = typeof this.imageUrl === "string" ? this.imageUrl.split(',') : this.imageUrl;
+    const arrayImage = [];
+    arrayImage.push(imageUrl[1]);
+    const req = {
       name: this.createProductForm.get('productName')?.value,
-      price: this.createProductForm.get('productId')?.value,
-      type: this.createProductForm.get('productCategory')?.value,
+      amount: this.createProductForm.get('productAmount')?.value,
+      category: this.createProductForm.get('productCategory')?.value,
+      material: this.createProductForm.get('productMaterial')?.value,
+      price: this.createProductForm.get('productPrice')?.value,
       discount: this.createProductForm.get('productDiscount')?.value,
-      description: this.createProductForm.get('productDescription')?.value,
-      // size: [
-      //   1,
-      //   2
-      // ],
-      images: [
-        this.createProductForm.get('productImg')?.value,
-      ],
-      material: this.createProductForm.get('productId')?.value,
-      guarantee: this.createProductForm.get('productId')?.value,
-    }).subscribe(res => {
-      if(res) {
-        console.log(res)
+      images: arrayImage,
+      description: this.createProductForm.get('productDescription')?.value
+    }
+    this.api.addProduct(req).subscribe(res => {
+      if (res) {
+        console.log(res);
+        this.router.navigate(['/admin/manage-product']);
       }
     })
-    this.dialogRef.close();
   }
 }

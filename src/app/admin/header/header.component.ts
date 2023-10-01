@@ -11,7 +11,7 @@ export class HeaderComponent {
   }
 
   onLogout() : void {
-    sessionStorage.setItem('token', '');
-    sessionStorage.setItem('role', '');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('role');
   }
 }

@@ -1,14 +1,13 @@
-import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
-import {LoginService} from './login.service';
-import {MatDialogRef} from "@angular/material/dialog";
-import {ShareDataService} from "../share-data.service";
+import { Component } from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+import {LoginService} from "../login.service";
+import {ShareDataService} from "../../share-data.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   message = '';
@@ -20,7 +19,7 @@ export class LoginComponent {
     ]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(5)
+      Validators.minLength(6)
     ]),
   });
 
@@ -36,7 +35,6 @@ export class LoginComponent {
     private router: Router,
     private api: LoginService,
     private shareData: ShareDataService,
-    public dialogRef: MatDialogRef<LoginComponent>,
   ) {
   }
 
@@ -49,7 +47,7 @@ export class LoginComponent {
       password: this.password?.value ?? undefined,
     }).subscribe((res) => {
       if (res.user) {
-        this.message = 'log in succesfully';
+        this.message = 'Đăng nhập thành công!';
         sessionStorage.setItem('token', res.accessToken);
         if (res.user.roles === 'USER') {
           this.router.navigate(['']);
@@ -58,21 +56,16 @@ export class LoginComponent {
           this.router.navigate(['admin']);
         }
         this.shareData.setSharedData(res.user);
-        this.dialogRef.close();
+      }
+    }, error => {
+      if (error.error.message === 'email_does_not_exist') {
+        this.message = 'Tài khoản chưa tồn tại. Vui lòng đăng ký!';
+      } else {
+        if (error.error.message === 'incorrect_email_password') {
+          this.message = 'Vui lòng nhập đúng mật khẩu!';
+        }
       }
     });
   }
 
-  onSignUp(): void {
-    this.api.signUp({
-      email: this.email?.value ?? undefined,
-      password: this.password?.value ?? undefined,
-    }).subscribe((res) => {
-      if (res.user) {
-        this.message = 'sign up succesfully';
-        console.log(this.message);
-      }
-        this.dialogRef.close();
-    });
-  }
 }

@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateUserComponent } from './manage-user/create-user/create-user.component';
 import { CreateProductComponent } from './manage-product/create-product/create-product.component';
 import { CreateProjectComponent } from './manage-project/create-project/create-project.component';
+import {EditProductComponent} from "./manage-product/edit-product/edit-product.component";
 
 const routes: Routes = [
   {
@@ -32,11 +33,20 @@ const routes: Routes = [
       },
       {
         path: 'manage-product',
-        component: ManageProductComponent,
-        children: [{
-          path: 'create-product',
-          component: CreateProductComponent
-        }]
+        children: [
+          {
+            path: '',
+            component: ManageProductComponent
+          },
+          {
+            path: 'create-product',
+            component: CreateProductComponent
+          },
+          {
+            path: 'edit-product/:id',
+            component: EditProductComponent
+          }
+        ]
       },
       {
         path: 'manage-order',

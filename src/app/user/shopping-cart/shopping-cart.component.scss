@@ -80,6 +80,12 @@ td.product-remove {
   padding: 0;
 }
 
+.cart-subtotal td input {
+  width: 250px;
+  border: 1px solid #cecece;
+  padding: 8px;
+}
+
 a.remove,
 a.icon-remove {
   display: block;
@@ -93,6 +99,7 @@ a.icon-remove {
   text-align: center;
   border: 2px solid currentColor;
   text-decoration: none;
+  cursor: pointer;
 }
 
 td.product-thumbnail {
@@ -292,7 +299,7 @@ input[type="number"] {
 }
 
 .cart_totals tbody th {
-  font-size: 0.9em;
+  font-size: 1.1em;
   text-transform: inherit;
   letter-spacing: 0;
   font-weight: 400;

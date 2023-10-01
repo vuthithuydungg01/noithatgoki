@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ShareDataService {
 
-  private sharedData: any;
+   sharedData: any = [];
 
   setSharedData(data: any) {
     this.sharedData = data;

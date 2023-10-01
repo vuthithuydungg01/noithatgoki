@@ -23,8 +23,11 @@ const routes: Routes = [
       },
       {
         path: 'shopping-cart',
-        component: ShoppingCartComponent,
         children: [
+          {
+            path: '',
+            component: ShoppingCartComponent,
+          },
           {
             path: 'pay',
             component: PayComponent,
@@ -36,10 +39,13 @@ const routes: Routes = [
       },
       {
         path: 'product',
-        component: ProductComponent,
         children: [
           {
-            path: 'product-detail',
+            path: '',
+            component: ProductComponent
+          },
+          {
+            path: 'product-detail/:id',
             component: ProductDetailComponent
           }]
       },
