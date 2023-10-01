@@ -10,7 +10,7 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class ManageUserComponent implements OnInit {
   listUser: any[] = [];
-  totalUser = 0;
+  // totalUser = 0;
   constructor(private apiUser: ManageUserService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -19,12 +19,11 @@ export class ManageUserComponent implements OnInit {
 
   getUser(): void {
     this.apiUser.getUser({}).subscribe(res => {
-      this.listUser = res.body.listUser;
-      this.totalUser = res.body.total;
+      this.listUser = res.body.listUser.filter((i: any) => i.roles === 'USER');
+      // this.totalUser = res.body.total;
     })
   }
   onDelete(user?: any): void {
-    console.log(user)
     const dialogRef = this.dialog.open(PopupDeleteComponent, {
       width: '500px',
       data: user

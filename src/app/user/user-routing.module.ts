@@ -10,6 +10,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { PayComponent } from './shopping-cart/pay/pay.component';
+import {BuySuccessComponent} from "./shopping-cart/buy-success/buy-success.component";
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
           {
             path: 'pay',
             component: PayComponent,
+          },
+          {
+            path: 'buy-success',
+            component: BuySuccessComponent,
           }]
       },
       {

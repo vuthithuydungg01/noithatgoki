@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ChartDataset, ChartType, ChartOptions } from 'chart.js';
+import {Component, OnInit} from '@angular/core';
+import {ChartDataset, ChartType, ChartOptions} from 'chart.js';
 import {ManageUserService} from "../manage-user/manage-user.service";
 import {ManageProductService} from "../manage-product/manage-product.service";
 import {ManageOrderService} from "../manage-order/manage-order.service";
@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   totalProduct = 0;
   totalOrder = 0;
   productEntity = 0;
+  listOrder: any[] = [];
 
   radarChartOptions: ChartOptions = {
     responsive: true,
@@ -32,8 +33,8 @@ export class DashboardComponent implements OnInit {
   ];
 
   radarChartData: ChartDataset[] = [
-    { data: [], label: 'Khách hàng' },
-    { data: [], label: 'Đơn hàng' },
+    {data: [], label: 'Khách hàng'},
+    {data: [], label: 'Đơn hàng'},
     // { data: [2, 5, 10, 8, 5, 12], label: 'Khách hàng' },
     // { data: [5, 2, 3, 4, 6, 8], label: 'Đơn hàng' },
   ];
@@ -41,7 +42,7 @@ export class DashboardComponent implements OnInit {
 
 
   lineChartData: ChartDataset[] = [
-    { data: [], label: 'Doanh thu' },
+    {data: [], label: 'Doanh thu'},
     // { data: [24000000, 36700000, 30000000, 32000000, 53000000, 60000000], label: 'Doanh thu' },
   ];
 
@@ -74,12 +75,13 @@ export class DashboardComponent implements OnInit {
               private apiOrder: ManageOrderService,
               private apiDashboard: DashboardService,
               private shareData: ShareDataService,
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.apiUser.getUser({}).subscribe(res => {
       this.listUser = res.body.listUser.filter((i: any) => i.roles === 'USER');
-      this.totalUser = res.body.total;
+      this.totalUser = res.body.listUser.filter((i: any) => i.roles === 'USER').length;
     })
     this.apiProduct.getProduct({}).subscribe(res => {
       this.totalProduct = res.body.total;
@@ -88,7 +90,7 @@ export class DashboardComponent implements OnInit {
       this.productEntity = res.body.total;
     })
     this.apiOrder.getOrder({}).subscribe(res => {
-      this.totalOrder = res.body.total || 0;
+      this.totalOrder = res.body.length || 0;
     })
     this.apiDashboard.getUserStatistical().subscribe(res => {
       this.radarChartData[0].data = res.body.map((i: any) => +i.amount).reverse();
@@ -103,7 +105,11 @@ export class DashboardComponent implements OnInit {
       this.lineChartData[0].data = res.body.map((i: any) => +i.amount).reverse();
       this.lineChartLabels = res.body.map((i: any) => +i.month).reverse();
     })
-
+    this.apiOrder.getOrder({}).subscribe((res) => {
+        if (res.status === 200) {
+          this.listOrder = res.body;
+        }
+      });
   }
 
 

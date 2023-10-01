@@ -79,7 +79,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   realMoneyPrice(price: number, discount?: number): number {
-    return discount ? price * (discount / 100) : price;
+    const value = discount ? price - (price * (discount / 100)) : price;
+    return value;
   }
 
   getProductDetail(id: string): void {
@@ -95,7 +96,10 @@ export class ProductComponent implements OnInit, OnDestroy {
 
         }
       }, error => {
-        console.log(error)
+        console.log(error);
+        if(error.error.message === "product_is_empty") {
+          this.toasterService.error('Số lượng sản phẩm không đủ!');
+        }
       })
     } else {
       this.router.navigate(['/user/login']);

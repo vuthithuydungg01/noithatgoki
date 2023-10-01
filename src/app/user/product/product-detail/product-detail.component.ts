@@ -37,13 +37,19 @@ export class ProductDetailComponent implements OnInit{
       })
     }
 
-  realMoneyPrice(price: number, discount?: number): number{
-    return discount ? price * (discount/100) : price;
+  realMoneyPrice(price: number, discount?: number): number {
+    const value = discount ? price - (price * (discount / 100)) : price;
+    return value;
   }
 
   addProductToCart(id: any): void {
     this.api.addProductToCart({productId: id}).subscribe(res => {
       this.toasterService.success('Thêm sản phẩm thành công!');
+    }, error => {
+      console.log(error);
+      if(error.error.message === "product_is_empty") {
+        this.toasterService.error('Số lượng sản phẩm không đủ!');
+      }
     })
   }
 }

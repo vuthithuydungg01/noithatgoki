@@ -20,6 +20,10 @@ export class ManageUserService {
     return this.http.get<any>(`${environment.url}/user/list`, {headers, params, observe: 'response' });
   }
 
+  public getUserId(id: number): Observable<any> {
+    return this.http.get<any>(`${environment.url}/user/${id}`);
+  }
+
   deleteUser(id: number): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

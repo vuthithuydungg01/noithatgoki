@@ -17,6 +17,7 @@ import { PayComponent } from './shopping-cart/pay/pay.component';
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {FormsModule} from "@angular/forms";
 import {ToastrModule} from "ngx-toastr";
+import { BuySuccessComponent } from './shopping-cart/buy-success/buy-success.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {ToastrModule} from "ngx-toastr";
     NewsComponent,
     ContactComponent,
     ShoppingCartComponent,
-    PayComponent
+    PayComponent,
+    BuySuccessComponent
   ],
   imports: [
     CommonModule,

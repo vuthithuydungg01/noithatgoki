@@ -35,7 +35,7 @@
               <th>Giá tiền</th>
               <th>Giảm giá</th>
               <th>Danh mục</th>
-              <th>Chức năng</th>
+              <th>Hành động</th>
             </tr>
             </thead>
             <tbody>
@@ -45,11 +45,14 @@
               <td>{{product.name}}</td>
               <td><img *ngFor="let image of product.listImage" src="{{'http://localhost:3000/'+image}}" alt="" width="100px;"></td>
               <td>{{product.amount}}</td>
-              <td><span class="badge bg-success">Còn hàng</span></td>
+              <td>
+                <span *ngIf="product.amount" class="badge bg-success">Còn hàng</span>
+                <span *ngIf="!product.amount" class="badge bg-danger">Hết hàng</span>
+              </td>
               <td>{{product.price}} đ</td>
               <td>{{product.discount || 0}} %</td>
               <td >{{product['category']}} </td>
-              <td><button class="btn btn-primary btn-sm trash mr-1" type="button" title="Xóa"
+              <td class=" text-center"><button class="btn btn-primary btn-sm trash mr-1" type="button" title="Xóa"
                           (click)="onDelete(product.id)"><i class="fas fa-trash-alt"></i>
               </button>
                 <button class="btn btn-primary btn-sm edit" type="button"  (click)="onEdit(product.id)"  title="Sửa" id="show-emp" data-toggle="modal"
