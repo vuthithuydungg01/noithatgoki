@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { ManageUserService } from './manage-user.service';
 import {PopupDeleteComponent} from "../popup-delete/popup-delete.component";
 import {MatDialog} from "@angular/material/dialog";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-manage-user',
@@ -11,7 +12,8 @@ import {MatDialog} from "@angular/material/dialog";
 export class ManageUserComponent implements OnInit {
   listUser: any[] = [];
   // totalUser = 0;
-  constructor(private apiUser: ManageUserService, public dialog: MatDialog) {}
+  constructor(private apiUser: ManageUserService, public dialog: MatDialog,
+              public toasterService: ToastrService) {}
 
   ngOnInit(): void {
    this.getUser();
@@ -32,6 +34,7 @@ export class ManageUserComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
         this.getUser();
+        this.toasterService.success('Xóa khách hàng thành công!');
       }
     });
   }

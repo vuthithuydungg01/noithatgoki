@@ -4,6 +4,7 @@ import {Subscription} from "rxjs";
 import {Router} from "@angular/router";
 import {PopupDeleteComponent} from "../popup-delete/popup-delete.component";
 import {MatDialog} from "@angular/material/dialog";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-manage-product',
@@ -17,7 +18,8 @@ export class ManageProductComponent implements OnInit {
 
   constructor(private api: ManageProductService,
               private router: Router,
-              private dialog: MatDialog
+              private dialog: MatDialog,
+              public toasterService: ToastrService
   ) {
   }
 
@@ -52,6 +54,7 @@ export class ManageProductComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.getProduct();
+        this.toasterService.success('Xóa sản phẩm thành công!');
       }
     });
   }

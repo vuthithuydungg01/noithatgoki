@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {ManageOrderService} from "./manage-order.service";
 import {PopupDeleteComponent} from "../popup-delete/popup-delete.component";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-manage-order',
@@ -18,7 +19,8 @@ export class ManageOrderComponent {
 
   constructor(private api: ManageOrderService,
               private router: Router,
-              private dialog: MatDialog
+              private dialog: MatDialog,
+              public toasterService: ToastrService
   ) {
   }
 
@@ -52,6 +54,7 @@ export class ManageOrderComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.getOrder();
+        this.toasterService.success('Xóa đơn hàng thành công!');
       }
     });
   }

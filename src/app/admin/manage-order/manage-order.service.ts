@@ -13,7 +13,11 @@ export class ManageOrderService {
 
   getOrder(req: any): Observable<any> {
     const params = createRequestOption(req);
-    return this.http.get<any>(`${environment.url}/order`, { params, observe: 'response' });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token')
+    });
+    return this.http.get<any>(`${environment.url}/order`, {headers, params, observe: 'response' });
   }
 
   deleteOrder(id: number): Observable<any> {

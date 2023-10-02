@@ -5,6 +5,8 @@ import {ShareDataService} from "../../share-data.service";
 import {ToastrService} from "ngx-toastr";
 import {ApiProcessService} from "../api-process/api-process.service";
 import {Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+
 
 @Component({
   selector: 'app-shopping-cart',
@@ -18,6 +20,7 @@ export class ShoppingCartComponent implements OnInit {
   totalProvisionalMoney = 0;
   product: any;
   productId = 0;
+  orderForm = new FormGroup({});
 
   constructor(private apiShoppingCart: ShoppingCartService,
               private api: ApiProcessService,
@@ -30,34 +33,22 @@ export class ShoppingCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCart();
-    this.getUserInfo();
     this.totalMoney = 0;
   }
 
   getCart(): void {
     this.apiShoppingCart.getCart({}).subscribe(res => {
       this.listProduct = res;
-      this.productId = res[0].id;
-      res.forEach((i: any) => {
+      this.totalProduct = res.totalProduct;
+      this.productId = res.result[0].userId;
+     /* res.result.forEach((i: any) => {
         this.totalProduct += i.amount;
-      });
-    })
-  }
-
-  getUserInfo(): void {
-    this.apiUser.getUserId(24).subscribe(res => {
-      console.log(res)
-      this.product = res.body;
-      console.log(this.product)
-      // this.editProductForm.patchValue({
-      //   productName: this.product?.name ,
-      //   productAmount: this.product.amount,
-      //   productCategory: this.product.category,
-      //   productMaterial: this.product.material,
-      //   productDiscount: this.product.discount,
-      //   productPrice: this.product.price,
-      //   productDescription: this.product.description,
-      // });
+      });*/
+      this.totalMoney = res.totalMoney;
+      this.apiUser.getUserId(this.productId).subscribe(res => {
+        this.product = res;
+        console.log(res)
+      })
     })
   }
 
@@ -72,12 +63,15 @@ export class ShoppingCartComponent implements OnInit {
     if (increase) {
       this.api.addProductToCart({productId: productId}).subscribe(res => {
         if (res) {
+          // this.totalProduct++;
+          this.getCart();
           this.toasterService.success('Thêm sản phẩm thành công!');
-          this.listProduct.forEach((i: any) => {
+          this.listProduct.result.forEach((i: any) => {
             if (i.product.id === productId) {
               i.amount++;
             }
           })
+
         }
       }, error => {
         console.log(error);
@@ -101,21 +95,21 @@ export class ShoppingCartComponent implements OnInit {
     return this.totalProvisionalMoney;
   }
 
-  onTotalMoney(): number {
+  /*onTotalMoney(): number {
     this.totalMoney += this.totalProvisionalMoney;
     return this.totalMoney;
-  }
+  }*/
 
   addOrder(): void {
-    this.router.navigate(['buy-success']);
-    /*this.apiShoppingCart.addOrder({}).subscribe(res => {
+    // this.router.navigate(['buy-success']);
+    this.apiShoppingCart.addOrder({}).subscribe(res => {
       if (res) {
         this.toasterService.success('Đặt hàng thành công!');
 
       }
     }, error => {
       console.log(error)
-    })*/
+    })
   }
 
 }

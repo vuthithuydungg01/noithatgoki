@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ManageProductService} from "../manage-product.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-create-product',
@@ -44,7 +45,8 @@ export class CreateProductComponent {
     // public dialogRef: MatDialogRef<CreateProductComponent>,
     // @Inject(MAT_DIALOG_DATA) public data: any,
     private api: ManageProductService,
-    private router: Router
+    private router: Router,
+    public toasterService: ToastrService
   ) {
   }
 
@@ -81,6 +83,7 @@ export class CreateProductComponent {
       if (res) {
         console.log(res);
         this.router.navigate(['/admin/manage-product']);
+        this.toasterService.success('Thêm sản phẩm thành công!');
       }
     })
   }

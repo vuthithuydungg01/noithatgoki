@@ -19,7 +19,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr class="card_item" *ngFor="let product of listProduct; index as i;">
+          <tr class="card_item" *ngFor="let product of listProduct.result; index as i;">
             <td class="product-remove">
               <a (click)="deleteInCart(product.id)"
                  class="remove"
@@ -93,7 +93,7 @@
                   >{{provisionalMoney(realMoneyPrice(product['product'].price, product['product'].discount), product.amount)}}
                     <span
                       class="woocommerce-Price-currencySymbol"
-                    >₫ {{i}} </span
+                    >₫ </span
                     ></bdi
                   ></span
                 >
@@ -154,28 +154,29 @@
 
               <table cellspacing="0" class="shop_table shop_table_responsive">
                 <tbody>
+<!--                <form class="row" [formGroup]="orderForm">-->
                 <tr class="cart-subtotal">
                   <th>Họ tên</th>
                   <td data-title="Họ tên">
-                    <input type="text"/>
+                    <input value="{{product.userName}}"  type="text"/>
                   </td>
                 </tr>
                 <tr class="cart-subtotal">
                   <th>Số điện thoại</th>
                   <td data-title="SDT">
-                    <input type="text"/>
+                    <input  value="{{product.phoneNumber}}" type="text"/>
                   </td>
                 </tr>
                 <tr class="cart-subtotal">
                   <th>Email</th>
                   <td data-title="Email">
-                    <input type="email"/>
+                    <input value="{{product.email}}"  type="email"/>
                   </td>
                 </tr>
                 <tr class="cart-subtotal">
                   <th>Địa chỉ</th>
                   <td data-title="Địa chỉ">
-                    <input type="text"/>
+                    <input value="{{product.address}}"  type="text"/>
                   </td>
                 </tr>
                 <tr class="cart-subtotal">
@@ -196,7 +197,7 @@
                     <strong
                     ><span class="woocommerce-Price-amount amount"
                     ><bdi
-                    >{{onTotalMoney()}}&nbsp;<span
+                    >{{totalMoney}}&nbsp;<span
                       class="woocommerce-Price-currencySymbol"
                     >₫</span
                     ></bdi
@@ -205,12 +206,13 @@
                     >
                   </td>
                 </tr>
+<!--                </form>-->
                 </tbody>
               </table>
 
               <div class="wc-proceed-to-checkout">
-                <!--                routerLink="buy-success" routerLinkActive="active"-->
-                <button (click)="addOrder()"
+<!--               -->
+                <button routerLink="buy-success" routerLinkActive="active"  (click)="addOrder()"
                    class="checkout-button button alt wc-forward wp-element-button"
                 >
                   ĐẶT HÀNG</button

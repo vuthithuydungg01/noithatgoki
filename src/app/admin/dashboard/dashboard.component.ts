@@ -84,26 +84,26 @@ export class DashboardComponent implements OnInit {
       this.totalUser = res.body.listUser.filter((i: any) => i.roles === 'USER').length;
     })
     this.apiProduct.getProduct({}).subscribe(res => {
-      this.totalProduct = res.body.total;
+      this.totalProduct = res.body.totalProduct;
     })
     this.apiProduct.getProduct({status: 0}).subscribe(res => {
-      this.productEntity = res.body.total;
+      this.productEntity = 6;
     })
     this.apiOrder.getOrder({}).subscribe(res => {
       this.totalOrder = res.body.length || 0;
     })
     this.apiDashboard.getUserStatistical().subscribe(res => {
-      this.radarChartData[0].data = res.body.map((i: any) => +i.amount).reverse();
-      this.radarChartLabels = res.body.map((i: any) => +i.month).reverse();
+      this.radarChartData[0].data = res.body.map((i: any) => +i.amount)  ;
+      this.radarChartLabels = res.body.map((i: any) => +i.month)  ;
     })
 
     this.apiDashboard.getOrderStatistical().subscribe(res => {
-      this.radarChartData[1].data = res.body.map((i: any) => +i.amount).reverse();
-      this.radarChartLabels = res.body.map((i: any) => +i.month).reverse();
+      this.radarChartData[1].data = res.body.map((i: any) => +i.amount)  ;
+      this.radarChartLabels = res.body.map((i: any) => +i.month)  ;
     })
     this.apiDashboard.getRevenue().subscribe(res => {
-      this.lineChartData[0].data = res.body.map((i: any) => +i.amount).reverse();
-      this.lineChartLabels = res.body.map((i: any) => +i.month).reverse();
+      this.lineChartData[0].data = res.body.map((i: any) => +i.amount)  ;
+      this.lineChartLabels = res.body.map((i: any) => +i.month)  ;
     })
     this.apiOrder.getOrder({}).subscribe((res) => {
         if (res.status === 200) {

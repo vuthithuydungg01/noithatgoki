@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ManageProductService} from "../manage-product.service";
 import {ApiProcessService} from "../../../user/api-process/api-process.service";
 import {ShareDataService} from "../../../share-data.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-edit-product',
@@ -48,6 +49,7 @@ export class EditProductComponent implements OnInit {
     private apiProduct: ManageProductService,
     private apiProductDetail: ApiProcessService,
     private share: ShareDataService,
+    public toasterService: ToastrService
     ) {}
 
   ngOnInit() {
@@ -101,6 +103,7 @@ export class EditProductComponent implements OnInit {
       if (res) {
         console.log(res);
         this.router.navigate(['/admin/manage-product']);
+        this.toasterService.success('Cập nhật sản phẩm thành công!');
       }
     })
   }

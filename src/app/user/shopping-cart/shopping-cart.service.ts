@@ -23,6 +23,11 @@ export class ShoppingCartService {
     return this.http.get<any>(`${environment.url}/cart`, httpOptions);
   }
 
+  updateProductToCart(id: string, req: any):Observable<any> {
+    const params = createRequestOption(req);
+    return this.http.put<any>(`${environment.url}/cart/${id}`, params);
+  }
+
   deleteProductInCart(id: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
